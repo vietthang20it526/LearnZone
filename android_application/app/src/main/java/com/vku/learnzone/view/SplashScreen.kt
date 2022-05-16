@@ -41,7 +41,7 @@ fun SplashScreen(navController: NavController) {
         )
         delay(Constants.SPLASH_SCREEN_DURATION)
         navController.popBackStack()
-        navController.navigate(Screen.SignUpScreen.route)
+        navController.navigate(Screen.SignInScreen.route)
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {

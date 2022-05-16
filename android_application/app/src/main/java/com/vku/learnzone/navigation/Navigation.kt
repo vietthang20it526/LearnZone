@@ -5,11 +5,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vku.learnzone.view.*
+import com.vku.learnzone.viewmodel.CourseViewModel
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.SplashScreen.route) {
+    val vm = CourseViewModel()
+    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
         composable(Screen.SplashScreen.route) {
             SplashScreen(navController = navController)
         }
@@ -20,7 +22,7 @@ fun Navigation() {
             SignUpScreen(navController = navController)
         }
         composable(Screen.HomeScreen.route) {
-            HomeScreen(navController = navController)
+            HomeScreen(vm)
         }
         composable(Screen.DetailsScreen.route) {
             DetailsScreen(navController = navController)

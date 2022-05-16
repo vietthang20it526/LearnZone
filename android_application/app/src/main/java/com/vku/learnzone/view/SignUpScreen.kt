@@ -1,5 +1,6 @@
 package com.vku.learnzone.view
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -17,7 +18,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -33,9 +33,14 @@ import androidx.navigation.NavController
 import com.vku.learnzone.R
 import com.vku.learnzone.navigation.Screen
 import com.vku.learnzone.ui.theme.*
+import com.vku.learnzone.viewmodel.AuthenticationViewModel
+
 
 @Composable
-fun SignUpScreen(navController: NavController) {
+fun SignUpScreen(
+    navController: NavController,
+    viewModel: AuthenticationViewModel = AuthenticationViewModel()
+) {
     val firaSansFamily = FontFamily(
         Font(R.font.dmsansregular, FontWeight.Normal),
         Font(R.font.dmsansmedium, FontWeight.Medium),
@@ -220,11 +225,9 @@ fun SignUpScreen(navController: NavController) {
                     )
                     Button(
                         onClick = {
-                            Toast.makeText(
-                                context,
-                                "Email: $useremail, Password: $password",
-                                Toast.LENGTH_LONG
-                            ).show()
+//                            Log.d("SignUpScreen", "Before: ${viewModel.response}")
+//                            viewModel.getApiTest()
+//                            Log.d("SignUpScreen", "After: ${viewModel.response}")
                         },
                         colors = ButtonDefaults.buttonColors(backgroundColor = colorPrimary),
                         modifier = Modifier
@@ -252,7 +255,7 @@ fun SignUpScreen(navController: NavController) {
                             text = buildAnnotatedString {
                                 append("Already have an account? Sign in")
                                 addStyle(
-                                    SpanStyle(color = colorPrimary),
+                                    SpanStyle(color =colorPrimary),
                                     23,
                                     this.length
                                 )
@@ -264,8 +267,8 @@ fun SignUpScreen(navController: NavController) {
                             }
                         )
                     }
-                }
             }
         }
     }
+}
 }
